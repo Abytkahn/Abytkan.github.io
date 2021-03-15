@@ -13,11 +13,17 @@ class BlogController extends Controller
 
         return view('blog.create')->with(['post' => $post]);
     }
-    public function store (Request $request){
+    public function store (Request $request) { 
         Post::create([
             'title' => $request -> title,
             'body'  => $request -> body
         ]);
         return back();
+    }
+    public function get_client($id) {
+        $client = Post::find($id);
+        if($client == null) 
+            return response(['massage' => 'cleint not found'], 404);
+        return view('blog.detail')->with(['client' => $client]);
     }
 }
