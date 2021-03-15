@@ -26,3 +26,7 @@ Route::get('post/create', function () {
     ]);
 });
 Route::get('post', [BlogController::class,"index"]);
+Route::get('post/create2', function() {
+    return view('blog.index'); 
+});
+Route::post('blog/index', [BlogController::class,'store'])->name('add-blog');
