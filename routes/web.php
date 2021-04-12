@@ -33,3 +33,11 @@ Route::post('blog/index',[BlogController::class,'store'])->name('add-blog');
 Route::get('post/{id}',[BlogController::class,'get_client']);
 Route::get('/adam','App\Http\Controllers\EmployeeController@index');
 Route::post('/addImage','App\Http\Controllers\EmployeeController@store')->name('addImage');
+Route::get('mail/send','App\Http\Controllers\MailController@send');
+Route::get('/home/{lang}', function($lang){
+    App::setlocale($lang);
+    return view('home');
+});
+Route::get('/home', function () {
+    return view('home');
+});
